@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div></div>
+
+  <script>
+    var div = document.querySelector('div');
+    div.onmousedown = function(e) {
+      var x = e.pageX;
+      var x0 = div.offsetLeft;
+      var y = e.pageY;
+      var y0 = div.offsetTop;
+      document.onmousemove = function(e) {
+        console.log(y);
+        div.style.left =  e.pageX - x + x0 + 'px';
+        div.style.top =  e.pageY - y + y0 + 'px';
+      }
+    }
+    
+    document.onmouseup = function() {
+      document.onmousemove = null;
+    }
+  </script>
+</body>
+
+</html>

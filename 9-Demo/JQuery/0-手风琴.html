@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>手风琴</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 1200px;
+      height: 400px;
+      margin: 50px auto;
+      border: 1px solid red;
+      overflow: hidden;
+    }
+
+    div li {
+      width: 240px;
+      height: 400px;
+      float: left;
+      /* transition: width 500ms; */
+    }
+
+    div ul {
+      width: 1300px;
+    }
+
+    img {
+      width: 800px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <ul>
+      <li>
+        <a href="#">
+          <img src="./images/9.8/1.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/9.8/2.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/9.8/3.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/9.8/4.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/9.8/5.jpg" alt="">
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="./libs/jquery3.5.1.min.js"></script>
+<script>
+  /* 
+需求: 鼠标移入时, 当前li宽度放大, 其余缩小, 移出时, 所有人恢复最初状态
+思路: 获取所有li, 分别绑定移入事件, 移入所有人先设置100宽度, 当前li单独设置800宽, 移出时, 所有人恢复成最开始240px宽度
+*/
+  // $('#box li').css('width', '240px')
+  // $('#box li').mouseenter(function () {
+  //   $(this).stop().animate({width: '800px'}).siblings().stop().animate({width: '100px'})
+  // })
+  // $('#box li').mouseleave(function () {
+  //   $(this).parent().find('li').stop().animate({width: 240})
+  // })
+</script>
+
+<script>
+  let timeID = null
+  $('#box li').hover(function () {
+    clearInterval(timeID)
+    timeID = setTimeout(function () {
+      $(this).stop().animate({
+        width: '800px'
+      }).siblings().stop().animate({
+        width: '100px'
+      })
+    }.bind(this), 300)
+  })
+</script>
+
+</html>

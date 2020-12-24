@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 大盒子 */
+    .box {
+      width: 790px;
+      height: 340px;
+      background-color: pink;
+      margin: 100px auto;
+      /* 溢出隐藏 */
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 轮播图ul的样式 */
+    ul {
+      list-style: none;
+      /* 为了ul可以放得下所有的li，需要设置对应的宽度 */
+      width: 900%;
+      /* 为了等会可以通过left控制ul的移动——》可以先设置好定位 */
+      position: absolute;
+    }
+
+    ul li {
+      float: left;
+    }
+
+    /* 轮播图小圆点ol */
+    ol {
+      width: 176px;
+      height: 22px;
+      background-color: rgba(255, 255, 255, .5);
+      /* 子绝父相 */
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 20px;
+      list-style: none;
+      border-radius: 11px;
+    }
+
+    ol li {
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      float: left;
+      border-radius: 50%;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    ol li.active {
+      background-color: red;
+    }
+
+
+    .arrow .left,
+    .arrow .right {
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, .3);
+      /* 子绝父相 */
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      line-height: 60px;
+      color: #fff;
+      font-family: '宋体';
+      cursor: pointer;
+      /* 禁止用户的选中文字 */
+      user-select: none;
+    }
+
+    .arrow .left {
+      left: 0;
+    }
+
+    .arrow .right {
+      right: 0;
+    }
+
+    .arrow .left:hover,
+    .arrow .right:hover {
+      background-color: rgba(0, 0, 0, .6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <!-- 轮播图ul -->
+    <ul>
+      <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/7.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/8.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+    </ul>
+
+    <!-- 小圆点ol -->
+    <ol>
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ol>
+
+    <!-- 左右的箭头 -->
+    <div class="arrow">
+      <div class="left">&lt;</div>
+      <div class="right">&gt;</div>
+    </div>
+
+  </div>
+
+  <script src="./animate.js"></script>
+  <script>
+    // function animates(element, distance) {
+    //   clearInterval(element.timeId);
+    //   var s0 = element.offsetLeft;
+    //   element.timeId = setInterval(function () {
+    //     if (element.offsetLeft === distance) {
+    //       clearInterval(element.timeId);
+    //     }
+    //     var step = (distance - element.offsetLeft) / 10;
+    //     if (step < 1 && step > 0) {
+    //       step = 1;
+    //     } else if (step > -1 && step < 0) {
+    //       step = -1;
+    //     }
+    //     element.style.left = element.offsetLeft + step + 'px';
+    //   }, 10)
+    // }
+
+    var left = document.querySelector('.left');
+    var right = document.querySelector('.right');
+    var ul = document.querySelector('ul');
+    var lis = document.querySelectorAll('ul li');
+    var dots = document.querySelectorAll('ol li');
+    console.log(lis.length);
+    var dist = lis[0].offsetWidth;
+
+    var count = 0;
+    right.onclick = function () {
+      count++;
+      animate(ul, -dist * count);
+      if (count > dots.length - 1) {
+        count = 0;
+        ul.style.left = 0;
+      }
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].className = '';
+      }
+      dots[count].className = 'active';
+    }
+
+    left.onclick = function () {
+      count--;
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].className = '';
+      }
+      dots[count].className = 'active';
+      animate(ul, -dist * count)
+    }
+  </script>
+</body>
+
+</html>

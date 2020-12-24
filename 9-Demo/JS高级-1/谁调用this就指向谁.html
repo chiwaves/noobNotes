@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>btn1</button>
+  <script>
+
+    var obj = {
+      a: 'aaaa',
+      fn: function () {
+        var a = this;
+        return function () {
+          console.log(a);
+        }
+      }
+    }
+    obj.fn()();
+
+    function ChuanTool(a, b) {
+      this.numA = a,
+        this.numB = b
+    }
+    ChuanTool.prototype.getMax = function () {
+      return this.numA > this.numB ? this.numA : this.numB;
+    }
+    ChuanTool.prototype.getMin = function () {
+      return this.numA > this.numB ? this.numB : this.numA;
+    }
+    var shili = new ChuanTool(3, 9);
+    shili.__proto__.randomNum = function () {
+      return Math.floor(Math.random() * Math.abs(this.numA - this.numB) + this.getMin(this.numA, this.numB));
+    }
+    console.log(shili.getMax());
+    console.log(shili.randomNum());
+  </script>
+</body>
+
+</html>

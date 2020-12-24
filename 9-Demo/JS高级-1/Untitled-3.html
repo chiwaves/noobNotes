@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      name: 'wangba',
+      age: 7,
+      props: {
+        tb1: 'engine',
+        tb2: 'gun',
+        toy3: 'acg'
+      }
+    }
+    
+    var zbc = {
+      name: 'T-800',
+      page: 16,
+      props: {
+        toy1: 'ee',
+        toy2: 'cs',
+        toy3: 'me'
+      }
+    }
+    var wdw = Object.assign(obj, zbc)
+    // zbc.name = 'zbcc'
+    // obj.name = 'objj'
+    // wdw.name = 'wdww'
+    console.log(wdw);
+    console.log(zbc);
+    console.log(obj);
+    // class MyDate extends Date {
+    //   formatDate() {
+    //     return `${this.getFullYear()}/${this.getMonth() + 1}/${this.getDate()}  ${this.getHours()}:${this.getMinutes()}:${this.getSeconds()}`
+    //   }
+    // }
+    // var time = new MyDate()
+    // var format = time.formatDate()
+    // console.log(format);
+    // console.log(time.getSeconds());
+  </script>
+</body>
+
+</html>

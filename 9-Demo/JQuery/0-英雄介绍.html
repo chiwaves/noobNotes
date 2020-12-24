@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>英雄的介绍</title>
+
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .king {
+      width: 852px;
+      margin: 100px auto;
+      background: url(./images/3.1/bg.png) no-repeat;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .king ul {
+      overflow: hidden;
+    }
+
+    .king li {
+      position: relative;
+      float: left;
+      width: 69px;
+      height: 69px;
+      margin-right: 10px;
+    }
+
+    .king li.current {
+      width: 224px;
+    }
+
+    .king li.current .big {
+      display: block;
+    }
+
+    .king li.current .small {
+      display: none;
+    }
+
+    .big {
+      width: 224px;
+      display: none;
+    }
+
+    .small {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 69px;
+      height: 69px;
+      border-radius: 5px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <script src="./js/jquery3.5.1.min.js"></script>
+
+  <div class="king">
+    <ul>
+      <li>
+        <a href="#">
+          <img src="./images/3.1/m1.jpg" alt="" class="small">
+          <img src="./images/3.1/m.png" alt="" class="big">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/3.1/l1.jpg" alt="" class="small">
+          <img src="./images/3.1/l.png" alt="" class="big">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/3.1/c1.jpg" alt="" class="small">
+          <img src="./images/3.1/c.png" alt="" class="big">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/3.1/w1.jpg" alt="" class="small">
+          <img src="./images/3.1/w.png" alt="" class="big">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/3.1/z1.jpg" alt="" class="small">
+          <img src="./images/3.1/z.png" alt="" class="big">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/3.1/h1.jpg" alt="" class="small">
+          <img src="./images/3.1/h.png" alt="" class="big">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./images/3.1/t1.jpg" alt="" class="small">
+          <img src="./images/3.1/t.png" alt="" class="big">
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+</body>
+<script src="./libs/jquery3.5.1.min.js"></script>
+<script>
+  $('.king li').mouseenter(function () {
+    $(this).stop().animate({width: '224px'})
+    $(this).find('.big').stop().fadeIn()
+    $(this).find('.small').stop().fadeOut()
+  })
+  .mouseleave(function () {
+    $(this).stop().animate({ width: '69px' })
+    $(this).find('.big').stop().fadeOut()
+    $(this).find('.small').stop().fadeIn()
+  })
+
+
+</script>
+
+</html>

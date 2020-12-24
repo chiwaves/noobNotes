@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box {
+        border: 1px solid #000;
+        box-sizing: border-box;
+      }
+
+      .box * {
+        box-sizing: border-box;
+      }
+
+      .box .header {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        border-bottom: 1px solid #222;
+      }
+
+      .box .header span {
+        transition: all 0.3s;
+        background-color: #fff;
+        line-height: 50px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 16px;
+        border-right: 1px solid #000;
+        flex: 1;
+      }
+
+      .box .header span.ac,
+      .box .header span:hover {
+        background-color: #ccc;
+      }
+
+      .box .main {
+        width: 100%;
+      }
+
+      .box .main div {
+        width: 100%;
+        text-align: center;
+        font-size: 60px;
+        font-weight: 800;
+        display: none;
+      }
+
+      .box .main div.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box1">
+      
+    </div>
+    <script>
+      var tabs1 = ['tab1', 'tab2', '发收费啊'];
+      var tabs2 = ['恶法', 'tab2', 'tab3'];
+      var tabs3 = ['tab1', '算法而非啊', 'tab3'];
+      var contents1 = ['content1', 'content2', 'content3'];
+      var contents2 = ['啊师傅明尼苏达', '参加撒豆', '你收到啦v死啊'];
+      var contents3 = ['content1', 'content2', '地方撒列'];
+      var contents4 = ['的赛场上的参数的设定', 'content2', '地方撒欸挨饿肺癌3'];
+
+      // function ty (theFather, tag, theSon, dataList) {
+      //   var father = document.querySelector(theFather);
+      //   for (var i = 0; i < dataList.length; i++) {
+      //     var son = document.createElement(tag);
+      //     son.classList.add(theSon);
+      //     son.innerHTML = theData[i];
+      //     father.appendChild(son);
+      //   }
+      // }
+      // ty('.header', 'span', '', tabs);
+      
+
+      function Createit(tango, tabs, contents) {
+        this.tango = document.querySelector(tango),
+        this.tabs = tabs,
+        this.contents = contents
+      }
+
+      Createit.prototype.init = function () {
+        var header = document.createElement('div');
+        header.classList.add('header');
+        var main = document.createElement('div');
+        main.classList.add('main');
+
+        for (var i = 0; i < this.tabs.length; i++) {
+          var tab = document.createElement('span');
+          tab.innerHTML = this.tabs[i];
+          header.appendChild(tab);
+          var c = document.createElement('div');
+          c.innerHTML = this.contents[i];
+          main.appendChild(c);
+          if (i == 0) {
+            tab.classList.add('ac');
+            c.classList.add('active');
+          }
+        }
+        this.tango.appendChild(header);
+        this.tango.appendChild(main);
+
+        var spans = this.tango.querySelectorAll('.header span');
+        var contents = this.tango.querySelectorAll('.main div');
+        for (var i = 0; i < spans.length; i++) {
+          spans[i].index = i;
+          spans[i].onclick = function () {
+            for (var j = 0; j < spans.length; j++) {
+              spans[j].classList.remove('ac');
+              contents[j].classList.remove('active');
+            }
+            this.classList.add('ac');
+            contents[this.index].classList.add('active');
+          }
+        }
+      }
+
+      var lsp = new Createit('.box', tabs3, contents1)
+      lsp.init();      
+      var lyp = new Createit('.box', tabs3, contents2)
+      lyp.init();      
+      var wltt = new Createit('.box', tabs2, contents4)
+      wltt.init();      
+    </script>
+  </body>
+</html>

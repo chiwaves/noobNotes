@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>ToDoList—最简单的待办事项列表</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <header>
+      <section>
+        <label for="title">ToDoList</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="添加ToDo"
+          required="required"
+          autocomplete="off"
+        />
+      </section>
+    </header>
+    <section>
+      <h2>正在进行 <span id="todocount">11</span></h2>
+      <ol id="todolist" class="demo-box"></ol>
+
+      <h2>已经完成 <span id="donecount">22</span></h2>
+      <ul id="donelist"></ul>
+    </section>
+    <footer>Copyright &copy; 2014 todolist.cn</footer>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+      var lists = [
+        { info: '吃饭', done: true },
+        { info: '睡觉', done: false },
+        { info: '打豆豆', done: false }
+      ]
+
+      function init () {
+        $('#todolist, #donelist').empty()
+        lists.forEach(function (item, index) {
+          var dom = `<li>
+          <input type="checkbox" ${item.done ? 'checked' : ''}>
+          <p>${item.info}</p>
+          <a href="javascript:;" index="${index}"></a>
+        </li>`
+          if (item.done) {
+            $('#donelist').append(dom)
+          } else {
+            $('#todolist').append(dom)
+          }
+        })
+        $('#todocount').text($('#todolist li').length)
+        $('#donecount').text($('#donelist li').length)
+      }
+      init()
+
+      $('#todolist, #donelist').on('click', 'input', function () {
+        var index = $(this).siblings('a').attr('index')
+        lists[index].done = !lists[index].done
+        init()
+      }).on('click', 'a', function () {
+        lists.splice($(this).attr('index'), 1)
+        init()
+      })
+
+      $('#title').keyup(function (e) {
+        var str = $(this).val().trim()
+        if (e.keyCode == 13 && str.length) {
+          lists.unshift({
+            info: str,
+            done: false
+          })
+          init()
+          $(this).val('')
+        }
+      })
+    </script>
+  </body>
+</html>

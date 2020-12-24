@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .btn {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .tango {
+      width: 400px;
+      height: 400px;
+      color: #f4937f;
+      font-size: 16px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="btn"></div>
+  <div class="tango">的附加费啊</div>
+  <script src="./libs/jquery.min.js"></script>
+  <script>
+    $(".btn").click(function () {
+      $(".tango").animate({
+        width: 30,
+        height: 40,
+        fontSize: "40px",
+      }, 1000, function () {
+        alert("动画执行完毕")
+      })
+    })
+  </script>
+</body>
+
+</html>

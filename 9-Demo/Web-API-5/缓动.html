@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      /* 如果需要等会通过left控制移动 */
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button>奔跑吧400</button>
+  <button>奔跑吧800</button>
+  <div>小犊子</div>
+
+  <script>
+    var div = document.querySelector('div');
+    var btn1 = document.querySelector('button:nth-child(1)');
+    var btn2 = document.querySelector('button:nth-child(2)');
+
+    function animation(element, distance) {
+      clearInterval(element.timeId);
+      var s0 = element.offsetLeft;
+      element.timeId = setInterval(function () {
+        if (element.offsetLeft === distance) {
+          clearInterval(element.timeId);
+        }
+        var step = (distance - element.offsetLeft) / 10;
+        if (step < 1 && step > 0) {
+          step = 1;
+        } else if (step > -1 && step < 0) {
+          step = -1;
+        }
+        element.style.left = element.offsetLeft + step + 'px';
+      }, 10)
+    }
+
+    btn1.onclick = function () {
+      animation(div, 400);
+    }
+    btn2.onclick = function () {
+      animation(div, 800);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETA</title>
+  <style>
+    body {
+      transition: all 3s;
+    }
+
+    p {
+      margin-top: 32px;
+      font-size: 48px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="set-box">
+    <h3>请选择课程时段</h3>
+      <button tip="12:30:00">午饭时间</button>
+      <button tip="18:30:00">晚饭时间</button>
+      <button tip="22:00:00">晚自习结束</button>
+  </div>
+  <p class="time">来，给你看个宝贝</p>
+  <script>
+    
+    function addZero(p) {
+      let inter = parseInt(p);
+      let format = inter >= 10 ? inter : '0' + inter;
+      return format;
+    }
+
+    function isZero(p) {
+      return p > 0 ? p : 0;
+    }
+
+    function breathLight(tango) {
+      let r = parseInt(255 * Math.random());
+      let g = parseInt(255 * Math.random());
+      let b = parseInt(255 * Math.random());
+      tango.style.background = `rgb(${r}, ${g}, ${b})`;
+      setInterval(() => {
+        let r = parseInt(255 * Math.random());
+        let g = parseInt(255 * Math.random());
+        let b = parseInt(255 * Math.random());
+        tango.style.background = `rgb(${r}, ${g}, ${b})`;
+      }, 4000);
+    }
+
+    function setTime() {
+      let now = new Date();
+      let inter = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + fore;
+      let point = new Date(inter) / 1;
+      let tmp = parseInt(isZero(point - now / 1) / 1000);
+      let hour = addZero(tmp / 3600);
+      let minute = addZero(tmp / 60 % 60);
+      let second = addZero(tmp % 60);
+      let res = `距离下课${hour}时${minute}分${second}秒`;
+      tango.innerText = res;
+      console.log('333');
+    }
+
+    let tango = document.querySelector('.time');
+    let btns = document.querySelectorAll('button');
+    let timeId;
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].onclick = function () {
+        clearInterval(timeId);
+        let fore = this.getAttribute('tip');
+        timeId = setInterval(setTime, 100);
+        breathLight(document.body);
+        tango.style .color = '#fff';
+      }
+    }
+  </script>
+</body>
+
+</html>

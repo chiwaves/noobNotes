@@ -1,0 +1,88 @@
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 350px;
+      height: 350px;
+      margin: 100px;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .big {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 0;
+      left: 360px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      display: none;
+    }
+
+    .mask {
+      width: 175px;
+      height: 175px;
+      background: rgba(255, 255, 0, 0.4);
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      cursor: move;
+      display: none;
+    }
+
+    .small {
+      position: relative;
+    }
+
+    .box img {
+      vertical-align: top;
+    }
+
+    #bigBox img {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <div id="smallBox" class="small">
+      <img src="./images/small.jpg" width="350" alt="" />
+      <div id="mask" class="mask"></div>
+    </div>
+    <div id="bigBox" class="big">
+      <img src="./images/big.jpg" class="bigImg" width="800" alt="" />
+    </div>
+  </div>
+
+  <script>
+    var smallBox = document.querySelector('#smallBox');
+    var bigBox = document.querySelector('#bigBox');
+    var mask = document.querySelector('#mask');
+    var box = document.querySelector('#box');
+    
+    smallBox.onmouseover = function () {
+      bigBox.style.display = 'block';
+      mask.style.display = 'block';
+      document.onmousemove = function (event) {
+        console.log(event.pageX);
+        if (event.pageX > 188 && event.pageX < 450 - 88) {
+          mask.style.left = event.pageX - 100 - 90 + 'px';
+        }
+      }
+    }
+    smallBox.onmouseout = function () {
+      bigBox.style.display = 'none';
+      mask.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>
