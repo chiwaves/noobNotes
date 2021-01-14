@@ -92,19 +92,17 @@
 
 ## jQuery
 
-- `$(.checkbox:checked) 花式CSS选择器
+- `$(.checkbox:checked)` 花式CSS选择器
 
 - document 是DOM顶级对象，无法调用animate方法
 
-- window.innerHTML 写死
+- `window.innerHTML` 写死
 
 - css 子绝父相，子元素同时写 left 和 right 或者同时写 top 和 bottom 把元素拉伸开
 
 - index() eq(),不是在同类而是在全部的子元素中的排名
 
-- 淘宝推荐栏图片居中
-
-- form 表单中的按钮默认跳转事件 `action`属性默认行为，e.preventDefault
+- `form` 表单中的按钮默认跳转事件 `action`属性默认行为，和a标签一样使用 javascript:; 或 e.preventDefault
 
 - 事件委托 --> 事件冒泡-->e.target
 
@@ -112,13 +110,37 @@
 
 - 节流防抖，万能防抖函数的闭包实现
 
-- `button onclick="location.href='./edit.html?id=' + $(this).parents('tr').attr('data-id')"
+- `<button onclick="location.href='./edit.html?id=' + $(this).parents('tr').attr('data-id')"
 
   ​     class="btn btn-primary btn-edit">编辑</button>`
+  
 
 
 
+## 大事件
 
+- 短路，debugger，input选择器
+- null == ''
+- 退出登录的confirm
+- window.parent
+- 表单 oninput 内容改变； onchange 内容改变并且失去焦点
+- startsWith
+- dataset 快速获取标签自定义属性
+- jq   ajax > serialize()
+- canvas，blob对象，toBlob 也是异步的
+- 9.10 map部分
+- 函数式编程
+- 函数柯里化
+- cropper预习文档
+- typeof 可以判断是否是函数
+
+
+
+## Node
+
+- exports 只能用于暴露函数
+- 再次需要认证时，浏览器自动发送cookie，是否是浏览器中所有的有效cookie，没有一点限制吗
+- res.send() 直接发送script，浏览器直接执行，为什么
 
 
 
@@ -139,7 +161,7 @@
 
 - [x] 箭头函数
 
-- [ ] 过滤器 splice slice
+- [x] 过滤器 splice slice
 
 - [ ] 计算属性
 
@@ -151,25 +173,25 @@
 
 - [ ] 哈希路由 	/#/order/alipay
 
-- [ ] 接口错误拦截  axios.interceptors.response.use()
+- [x] 接口错误拦截  axios.interceptors.response.use()
 
-- [ ] testground 简易的组件跨域实现
+- [x] testground 简易的组件跨域实现
 
 - [x] 动态加载对象 用[ ]
 
 - [x] 对象的继承 JSON.parse(JSON.stringify(item))可行，es6扩展运算符...可行，Object.create(item)不可行
 
-- [ ] html form 标签 表单 submit
+- [x] html form 标签 表单 submit
 
 - [x] NavHeader用户名下拉列表bug
 
 - [ ] 订单筛选的完美实现
 
-- [ ] 闭包例子10中的onclick事件
+- [x] 《闭包，看这一篇就够了——带你看透闭包的本质，百发百中》闭包例子10中的onclick事件
 
 - [x] 异步函数到底是啥，闭包是怎么解决异步的问题的
 
-- [ ] 廖雪峰 箭头函数 this 词法作用域
+- [x] 廖雪峰 箭头函数 this 词法作用域
 
 - [x] eval()到底有啥用？有和没有有区别？
 
